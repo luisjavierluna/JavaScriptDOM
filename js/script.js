@@ -83,10 +83,18 @@ const datos = {
 const nombre = document.querySelector('#nombre')
 const email = document.querySelector('#email')
 const mensaje = document.querySelector('#mensaje')
+const formulario = document.querySelector('.formulario')
 
 nombre.addEventListener('input', leerTexto)
 email.addEventListener('input', leerTexto)
 mensaje.addEventListener('input', leerTexto)
+formulario.addEventListener('submit', function(evento) {
+    evento.preventDefault
+
+    // Validar el formulario
+
+    // Enviar Formulario
+})
 
 function leerTexto(e) {
     // console.log(e.target.value)
