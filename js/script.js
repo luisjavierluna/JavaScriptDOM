@@ -35,3 +35,28 @@ const navegacion = document.querySelector('.navegacion')
 navegacion.appendChild(nuevoEnlace)
 
 console.log(nuevoEnlace)
+
+// Eventos
+
+console.log(1)
+
+window.addEventListener('load', imprimir)
+
+window.onload = function() {
+    console.log(3)
+}
+
+document.addEventListener('DOMContentLoaded', function(){ // solo espera por el HTML, pero no espera CSS o imagenes
+    console.log(4)
+})
+
+
+console.log(5)
+
+function imprimir() {
+    console.log(2)
+}
+
+window.onscroll = function() {
+    console.log('scrolling...')
+}
