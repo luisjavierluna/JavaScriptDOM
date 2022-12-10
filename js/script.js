@@ -62,15 +62,15 @@ console.log(nuevoEnlace)
 // }
 
 // Seleccionar elementos y asociarles un evento
-const btnEnviar = document.querySelector('.boton--primario')
-btnEnviar.addEventListener('click', function(evento) {
-    console.log(evento)
-    evento.preventDefault()
+// const btnEnviar = document.querySelector('.boton--primario')
+// btnEnviar.addEventListener('click', function(evento) {
+//     console.log(evento)
+//     evento.preventDefault()
 
-    // Validar un formulario
+//     // Validar un formulario
 
-    console.log('enviando formulario')
-}) 
+//     console.log('enviando formulario')
+// }) 
 
 // Eventos de los inputs y textarea
 
@@ -88,18 +88,60 @@ const formulario = document.querySelector('.formulario')
 nombre.addEventListener('input', leerTexto)
 email.addEventListener('input', leerTexto)
 mensaje.addEventListener('input', leerTexto)
+
+// El evento de Submit
 formulario.addEventListener('submit', function(evento) {
-    evento.preventDefault
+    evento.preventDefault()
 
     // Validar el formulario
 
-    // Enviar Formulario
+    const { nombre, email, mensaje } = datos
+
+    if(nombre === '' || email === '' || mensaje === '')
+    {
+        mostrarError('Todos los campos son obligatorios')
+
+        return // corta la ejecución del código
+    }
+
+    // Crear la alerta de enviar correctamente
+
+    console.log('Enviando formulario')
+
+    mostrarMensaje('Mensaje enviado correctamente')
+
 })
+
+function mostrarMensaje(mensaje) {
+    const alerta = document.createElement('P')
+    alerta.textContent = mensaje
+    alerta.classList.add('correcto')
+
+    formulario.appendChild(alerta)
+
+    setTimeout(() => {
+        alerta.remove
+    }, 5000);
+}
 
 function leerTexto(e) {
     // console.log(e.target.value)
     
     datos[e.target.id] = e.target.value
 
-    console.log(datos)
+    // console.log(datos)
+}
+
+function mostrarError(mensaje) {
+    const error = document.createElement('P')
+    error.textContent = mensaje
+    error.classList.add('error')
+
+    formulario.appendChild(error)
+
+    // Desaparezca después de 5 segundos
+
+    setTimeout(() => {
+        error.remove()
+    }, 5000);
 }
